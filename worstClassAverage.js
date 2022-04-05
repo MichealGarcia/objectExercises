@@ -90,13 +90,19 @@ function findWorstClassAverage(gradesObject) {
   };
 
   function findLowestScoreAverage(objectofAverages) {
-    let Currentscore;
-    let lowestScore;
+    let moreAverageScores = [];
+    let lowestScore = [];
+    let finalOutput = "";
     for (i in objectofAverages) {
-      Currentscore = objectofAverages[i][0]
-      if (2 == 2) {
+      moreAverageScores.push(objectofAverages[i][0])
 
-      };
+    }
+    lowestScore = moreAverageScores.sort()
+
+    for (i in objectofAverages) {
+      if (lowestScore[0] === objectofAverages[i][0]) {
+        return lowestScore[0] + " " + objectofAverages[i][1]
+      }
     }
   };
 
@@ -104,9 +110,7 @@ function findWorstClassAverage(gradesObject) {
   createTestsArray();
   addToTestsArray();
   makeArrayAverage(eachTest);
-  findLowestScoreAverage(averageScores(eachTest))
-  return averageScores(eachTest)
-  // return findLowestAverage();
+  return findLowestScoreAverage(averageScores(eachTest)).split(" ")
 };
 
 
@@ -114,6 +118,7 @@ function findWorstClassAverage(gradesObject) {
 
 
 
-console.log(findWorstClassAverage(grades));
+let output = findWorstClassAverage(grades);
 
+console.log(`${output[1]} was the hardest, with an average score of ${output[0]}`)
 
